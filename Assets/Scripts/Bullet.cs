@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private float timer;
+    
     private Rigidbody2D rb => GetComponent<Rigidbody2D>();
     // Start is called before the first frame update
     void Start()
@@ -12,7 +14,12 @@ public class Bullet : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() =>  transform.right = rb.velocity;
-    
+    void Update()
+    {
+        transform.right = rb.velocity;
+        timer += Time.deltaTime;
+        if(timer>=5)
+            Destroy(gameObject);
+    }
     
 }
