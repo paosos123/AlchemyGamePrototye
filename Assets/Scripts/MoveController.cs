@@ -14,7 +14,13 @@ public class MoveController : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField]private CapsuleCollider2D capsuleCollider;
     [SerializeField] private LayerMask groundLayer;
-   
+    [Header("Health")] 
+    public int curHealth;
+    [SerializeField] private int maxHealth=5;
+    [SerializeField] private int healHealth;
+    [SerializeField] private int maxHealthPot =2;
+    [SerializeField] private int curHealthPot ;
+    
     private float xInput;
     private Vector2 vecGravity;
 
@@ -26,6 +32,8 @@ public class MoveController : MonoBehaviour
     {
         vecGravity = new Vector2(0, -Physics.gravity.y);
         rb = GetComponent<Rigidbody2D>();
+        curHealth = maxHealth;
+        curHealthPot = maxHealthPot;
     }
 
     // Update is called once per frame
@@ -61,6 +69,13 @@ public class MoveController : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.6f);
             }
         }
+
+        if (isDead())
+        {
+            Destroy(gameObject);
+        }
+        Heal();
+        
     }
 
     private void FixedUpdate()
@@ -105,5 +120,24 @@ public class MoveController : MonoBehaviour
         facingRight = !facingRight;
         transform.Rotate(0,180,0);
     }
-    
+
+    private bool isDead()
+    {
+        return curHealth <= 0;
+    }
+
+    private void Heal()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (curHealthPot > 0)
+            {
+                curHealthPot -= 1;
+                curHealth += healHealth;
+                Debug.Log(curHealth);
+                Debug.Log(curHealthPot);
+            }
+           
+        }
+    }
 }

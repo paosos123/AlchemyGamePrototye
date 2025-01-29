@@ -11,10 +11,10 @@ public class GunController : MonoBehaviour
     [SerializeField] private  float gunDistance = 1.5f;
     [SerializeField] private Transform bulletTranform;
     private bool gunFacingRight = true;
-
+    private float timer;
     [Header("Bullet")] 
     [SerializeField] private GameObject bulletPerfab;
-
+    [SerializeField] private float spawneBulletTime;
     [SerializeField] private float bulletSpeed;
    
     // Start is called before the first frame update
@@ -26,6 +26,7 @@ public class GunController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        timer += Time.deltaTime;
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector3 direction = mousePos - transform.position;
         gun.rotation=Quaternion.Euler(new Vector3(0,0,Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg ));
@@ -34,7 +35,7 @@ public class GunController : MonoBehaviour
         GunFlipController(mousePos);
         bulletTranform.rotation = Quaternion.Euler(0, 0, angle );
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0)&&(timer > spawneBulletTime))
         {
            Shoot(angle);
         }

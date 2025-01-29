@@ -9,6 +9,7 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField] private float spawneBulletTime;
     [SerializeField] private float distanceAttack;
     [SerializeField]private GameObject player;
+    [SerializeField] private int health;
     private float timer;
     // Start is called before the first frame update
     void Start()
@@ -37,5 +38,14 @@ public class EnemyShooting : MonoBehaviour
     private  void Shooting()
     {
         Instantiate(bulletPerfabs, bulletPos.position,Quaternion.identity);
+    }
+
+   
+    void OnTriggerEnter2D(Collider2D col)
+    {
+            if(col.gameObject.tag == "PlayerBullet")
+            {
+                Destroy(gameObject);
+            }
     }
 }
