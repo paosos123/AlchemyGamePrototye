@@ -14,7 +14,7 @@ public class GunController : MonoBehaviour
     private float timer;
     [Header("Bullet")] 
     [SerializeField] private GameObject bulletPerfab;
-    [SerializeField] private float spawneBulletTime;
+    [SerializeField] private float spawnBulletTime;
     [SerializeField] private float bulletSpeed;
    
     // Start is called before the first frame update
@@ -35,8 +35,9 @@ public class GunController : MonoBehaviour
         GunFlipController(mousePos);
         bulletTranform.rotation = Quaternion.Euler(0, 0, angle );
 
-        if (Input.GetKeyDown(KeyCode.Mouse0)&&(timer > spawneBulletTime))
+        if (Input.GetKeyDown(KeyCode.Mouse0)&&(timer > spawnBulletTime))
         {
+            timer = 0;
            Shoot(angle);
         }
     }

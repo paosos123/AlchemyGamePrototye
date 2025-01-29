@@ -33,6 +33,11 @@ public class EnemyShooting : MonoBehaviour
                 
             }
         }
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
        
     }
     private  void Shooting()
@@ -45,7 +50,9 @@ public class EnemyShooting : MonoBehaviour
     {
             if(col.gameObject.tag == "PlayerBullet")
             {
-                Destroy(gameObject);
+                health -= 1;
+               
+                Destroy(col.gameObject);
             }
     }
 }
