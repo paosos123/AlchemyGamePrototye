@@ -21,6 +21,8 @@ public class MoveController : MonoBehaviour
     [SerializeField] private int maxHealthPot =2;
     [SerializeField] private int curHealthPot ;
     
+    [Header("")] 
+    
     private float xInput;
     private Vector2 vecGravity;
 
@@ -43,6 +45,10 @@ public class MoveController : MonoBehaviour
         FlipController();
         xInput = Input.GetAxisRaw("Horizontal");
         MovementX();
+        if ((xInput > 0 || xInput < 0)&& !isGrounded())
+        {
+           
+        }
         if (Input.GetKeyDown(KeyCode.Space)&& isGrounded()) 
             Jump();
       

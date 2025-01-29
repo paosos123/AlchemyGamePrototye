@@ -79,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1846386991
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -110,7 +110,7 @@ MonoBehaviour:
   gunDistance: 1.2
   bulletTranform: {fileID: 424229621527641324}
   bulletPerfab: {fileID: 4834903032953553429, guid: d0c6d4f1a4eb37a478eafb4fc00955b7, type: 3}
-  spawneBulletTime: 2
+  spawnBulletTime: 1
   bulletSpeed: 10
 --- !u!61 &2329853828749920220
 BoxCollider2D:
@@ -207,6 +207,11 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  curHealth: 0
+  maxHealth: 5
+  healHealth: 0
+  maxHealthPot: 2
+  curHealthPot: 0
 --- !u!1 &4333109811092390739
 GameObject:
   m_ObjectHideFlags: 0
