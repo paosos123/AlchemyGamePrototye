@@ -5,7 +5,8 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public float FollowSpeed = 2f;
-    public float yOffset =1f;
+    public float yOffset;
+    public float yOffsetVa =1f;
     public Transform target;
 
     // Update is called once per frame
@@ -13,5 +14,13 @@ public class CameraFollow : MonoBehaviour
     {
         Vector3 newPos = new Vector3(target.position.x,target.position.y + yOffset,-10f);
         transform.position = Vector3.Slerp(transform.position,newPos,FollowSpeed*Time.deltaTime);
+        if (Input.GetKey(KeyCode.S))
+        {
+            yOffset = -0.2f;
+        }
+        else
+        {
+            yOffset = yOffsetVa;
+        }
     }
 }
