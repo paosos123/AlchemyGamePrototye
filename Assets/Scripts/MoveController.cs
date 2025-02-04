@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class MoveController : MonoBehaviour
 {
@@ -15,14 +17,18 @@ public class MoveController : MonoBehaviour
     [SerializeField]private CapsuleCollider2D capsuleCollider;
     [SerializeField] private LayerMask groundLayer;
     [Header("Health")] 
-    public int curHealth;
+    public int curHealth = 5;
     [SerializeField] private int maxHealth=5;
-    [SerializeField] private int healHealth;
+    [SerializeField] private int healHealth=2;
     [SerializeField] private int maxHealthPot =2;
-    [SerializeField] private int curHealthPot ;
-    
-    [Header("")] 
-    
+    [SerializeField] private float curHealthPot =2;
+    [Header("HealthBar")] 
+    [SerializeField] private List<Image> allHeart;
+    [SerializeField] private Sprite fillHeart;
+    [SerializeField] private Sprite emptyHeart;
+
+    private Animator animator;
+    static public int damageBullet = 1;
     private float xInput;
     private Vector2 vecGravity;
 
@@ -36,23 +42,23 @@ public class MoveController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         curHealth = maxHealth;
         curHealthPot = maxHealthPot;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     private void Update()
     {
-      
+        if (curHealth > maxHealth)
+        {
+            curHealth = maxHealth;
+        }
         FlipController();
         xInput = Input.GetAxisRaw("Horizontal");
         MovementX();
-        if ((xInput > 0 || xInput < 0)&& !isGrounded())
-        {
-           
-        }
         if (Input.GetKeyDown(KeyCode.Space)&& isGrounded()) 
             Jump();
       
-        if (rb.velocity.y > 0 && isJumping)
+        if (rb.velocity.y > 0 && isJumping )
         {
             jumpCounter += Time.deltaTime;
             if (jumpCounter > jumpTime) isJumping = false;
@@ -81,28 +87,42 @@ public class MoveController : MonoBehaviour
             Destroy(gameObject);
         }
         Heal();
+
+        foreach (Image img in allHeart)
+        {
+            img.sprite = emptyHeart;
+        }
+        
+        for (int i = 0; i < curHealth; i++)
+        {
+            allHeart[i].sprite = fillHeart;
+        }
+        animator.SetBool("isJumping",!isGrounded());
         
     }
 
     private void FixedUpdate()
     {
-        
+        animator.SetFloat("xVelocity" ,Mathf.Abs(rb.velocity.x) );
+        animator.SetFloat("yVelocity" ,rb.velocity.y);
     }
 
     private  bool  isGrounded()
     {
         return  Physics2D.OverlapCapsule(groundCheck.position, new Vector2(capsuleCollider.size.x, capsuleCollider.size.y),CapsuleDirection2D.Horizontal,0,groundLayer);
     }
+   
     private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         isJumping = true;
         jumpCounter = 0;
+        animator.SetBool("isJumping", !isGrounded());
     }
 
     private void FallMuit()
     {
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < 0 )
         {
             rb.velocity -= vecGravity * fallMultiplier * Time.deltaTime;
         }
@@ -146,4 +166,12 @@ public class MoveController : MonoBehaviour
            
         }
     }
+   
+    /*static  IEnumerator GetHurt()
+    {
+        Physics2D.IgnoreLayerCollision(7,8);
+        yield return new WaitForSeconds(2);
+        Physics2D.IgnoreLayerCollision(7,8,false);
+    }*/
+   
 }

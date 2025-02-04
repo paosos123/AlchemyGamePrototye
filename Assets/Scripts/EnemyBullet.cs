@@ -27,6 +27,7 @@ public class EnemyBullet : MonoBehaviour
         float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg;
         //rot change degatree like this rot +90
         transform.rotation = quaternion.Euler(0,0,rot);
+        Collider2D targetCollider =  player.GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -48,10 +49,14 @@ public class EnemyBullet : MonoBehaviour
         if (col.gameObject.tag == "Player")
         {
             playerScript.curHealth -= 1;
+           
             Destroy(gameObject);
         }
-      
+        if (col.gameObject.layer == LayerMask.NameToLayer("Ground"))
+        {
+            Destroy(gameObject);
+        }
     }
+   
     
-
 }

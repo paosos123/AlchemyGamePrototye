@@ -18,7 +18,7 @@ public class Bullet : MonoBehaviour
     {
         transform.right = rb.velocity;
         timer += Time.deltaTime;
-        if(timer>=5)
+        if(timer>=1.5)
             Destroy(gameObject);
     }
     

@@ -9,7 +9,7 @@ public class EnemyShooting : MonoBehaviour
     [SerializeField] private float spawneBulletTime;
     [SerializeField] private float distanceAttack;
     [SerializeField]private GameObject player;
-    [SerializeField] private int health;
+    [SerializeField] private float health;
     private float timer;
     // Start is called before the first frame update
     void Start()
@@ -50,7 +50,7 @@ public class EnemyShooting : MonoBehaviour
     {
             if(col.gameObject.tag == "PlayerBullet")
             {
-                health -= 1;
+                health -= MoveController.damageBullet;
                
                 Destroy(col.gameObject);
             }

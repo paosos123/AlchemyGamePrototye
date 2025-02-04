@@ -51,7 +51,7 @@ public class GunController : MonoBehaviour
     
     public void Shoot(float angle)
     {
-        gunAnim.SetTrigger("Shoot");
+    //    gunAnim.SetTrigger("Shoot");
         GameObject bulletClone = Instantiate(bulletPerfab);
         bulletClone.transform.position = bulletTranform.position;
         bulletClone.transform.rotation = Quaternion.Euler(0, 0, angle);
