@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 
 public class MoveController : MonoBehaviour
 {
@@ -21,12 +21,13 @@ public class MoveController : MonoBehaviour
     [SerializeField] private int maxHealth=5;
     [SerializeField] private int healHealth=2;
     [SerializeField] private int maxHealthPot =2;
-    [SerializeField] private float curHealthPot =2;
+    [SerializeField] private int curHealthPot =2;
+    [SerializeField] private  TextMeshProUGUI counterHealthPotText;
     [Header("HealthBar")] 
     [SerializeField] private List<Image> allHeart;
     [SerializeField] private Sprite fillHeart;
     [SerializeField] private Sprite emptyHeart;
-
+    
     private Animator animator;
     static public int damageBullet = 1;
     private float xInput;
@@ -98,7 +99,7 @@ public class MoveController : MonoBehaviour
             allHeart[i].sprite = fillHeart;
         }
         animator.SetBool("isJumping",!isGrounded());
-        
+        UpdateText();
     }
 
     private void FixedUpdate()
@@ -166,7 +167,17 @@ public class MoveController : MonoBehaviour
            
         }
     }
-   
+    private void UpdateText()
+    {
+        if (counterHealthPotText != null)
+        {
+            counterHealthPotText .text = curHealthPot.ToString(); // Or just: clickCount.ToString(); for only the number
+        }
+        else
+        {
+            Debug.LogError("Counter Text UI element not assigned!");
+        }
+    }
     /*static  IEnumerator GetHurt()
     {
         Physics2D.IgnoreLayerCollision(7,8);
