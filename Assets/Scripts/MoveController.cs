@@ -8,7 +8,7 @@ public class MoveController : MonoBehaviour
 {
     private Rigidbody2D rb;
 
-    [SerializeField] private float moveSpeed;
+    [SerializeField]public static float moveSpeed = 6f;
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpTime;
     [SerializeField] private float fallMultiplier;
@@ -21,15 +21,19 @@ public class MoveController : MonoBehaviour
     [SerializeField] private int maxHealth=5;
     [SerializeField] private int healHealth=2;
     [SerializeField] private int maxHealthPot =2;
-    [SerializeField] private int curHealthPot =2;
+    [SerializeField] public  static int curHealthPot =2;
     [SerializeField] private  TextMeshProUGUI counterHealthPotText;
     [Header("HealthBar")] 
     [SerializeField] private List<Image> allHeart;
     [SerializeField] private Sprite fillHeart;
     [SerializeField] private Sprite emptyHeart;
-    
+    [Header("Element")]
+    [SerializeField] private  TextMeshProUGUI counterFireEle;
+    [SerializeField] private  TextMeshProUGUI counterWaterEle;
+    [SerializeField] private  TextMeshProUGUI counterEarthEle;
+    static  public int FireEleC, WaterEleC, EarthEleC = 0;
     private Animator animator;
-    static public int damageBullet = 1;
+    static public float damageBullet = 1;
     private float xInput;
     private Vector2 vecGravity;
 
@@ -100,6 +104,11 @@ public class MoveController : MonoBehaviour
         }
         animator.SetBool("isJumping",!isGrounded());
         UpdateText();
+        
+        counterFireEle.text = (FireEleC).ToString();
+        counterWaterEle.text = (WaterEleC).ToString();
+        counterEarthEle.text = (EarthEleC).ToString(); 
+      
     }
 
     private void FixedUpdate()
@@ -184,5 +193,22 @@ public class MoveController : MonoBehaviour
         yield return new WaitForSeconds(2);
         Physics2D.IgnoreLayerCollision(7,8,false);
     }*/
-   
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "FireEle")
+        {
+            counterFireEle.text = (FireEleC+=1).ToString(); 
+            Destroy(col.gameObject);
+        }
+        if (col.gameObject.tag == "WaterEle")
+        {
+            counterWaterEle.text = (WaterEleC+=1).ToString(); 
+            Destroy(col.gameObject);
+        }
+        if (col.gameObject.tag == "EarthEle")
+        {
+            counterEarthEle.text = (EarthEleC+=1).ToString(); 
+            Destroy(col.gameObject);
+        }
+    }
 }

@@ -50,6 +50,11 @@ public class enemyPatrol : MonoBehaviour
                 flip(); // Call flip function when changing direction
             }
         }
+
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
     private void flip()
     {

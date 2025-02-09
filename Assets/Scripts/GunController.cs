@@ -14,7 +14,7 @@ public class GunController : MonoBehaviour
     private float timer;
     [Header("Bullet")] 
     [SerializeField] private GameObject bulletPerfab;
-    [SerializeField] private float spawnBulletTime;
+     public  static  float spawnBulletTime = 2f;
     [SerializeField] private float bulletSpeed;
    
     // Start is called before the first frame update
@@ -54,7 +54,7 @@ public class GunController : MonoBehaviour
     //    gunAnim.SetTrigger("Shoot");
         GameObject bulletClone = Instantiate(bulletPerfab);
         bulletClone.transform.position = bulletTranform.position;
-        bulletClone.transform.rotation = Quaternion.Euler(0, 0, angle);
+        bulletClone.transform.rotation = Quaternion.Euler(0, 0, angle+180);
 
         bulletClone.GetComponent<Rigidbody2D>().velocity = bulletTranform.right * bulletSpeed;
       

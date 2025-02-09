@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - PlayerBullet
   - EnemyBullet
+  - FireEle
+  - WaterEle
+  - EarthEle
   layers:
   - Default
   - TransparentFX
