@@ -14,9 +14,11 @@ public class enemyPatrol : MonoBehaviour
     private Animator anim;
     [SerializeField] private float health;
     private Transform currentPoint;
+    private AudioManager _audioManager;
     // Start is called before the first frame update
     void Start()
     {
+        _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         currentPoint = pointB.transform;
@@ -53,6 +55,8 @@ public class enemyPatrol : MonoBehaviour
 
         if (health <= 0)
         {
+            _audioManager.PlaySFX(_audioManager.enemyDead);
+            MoveController.EarthEleC+=1;
             Destroy(gameObject);
         }
     }
@@ -76,7 +80,7 @@ public class enemyPatrol : MonoBehaviour
         if(col.gameObject.tag == "PlayerBullet")
         {
             health -= MoveController.damageBullet;
-               
+            _audioManager.PlaySFX(_audioManager.enemyHit);
             Destroy(col.gameObject);
         }
     }

@@ -48,8 +48,7 @@ public class EnemyBullet : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
-            playerScript.curHealth -= 1;
-           
+         
             Destroy(gameObject);
         }
         if (col.gameObject.layer == LayerMask.NameToLayer("Ground"))

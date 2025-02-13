@@ -24,10 +24,18 @@ public class NextLevel : MonoBehaviour
             fButton.SetActive(true);
             if (Input.GetKeyDown(KeyCode.F))
             {
-                Debug.Log("Pause");
+                
                 choosePanel.SetActive(true);
                 Time.timeScale = 0;
             }
+        }
+    }
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player")
+        {
+            fButton.SetActive(false);
+          
         }
     }
 }

@@ -16,10 +16,10 @@ public class GunController : MonoBehaviour
     [SerializeField] private GameObject bulletPerfab;
      public  static  float spawnBulletTime = 2f;
     [SerializeField] private float bulletSpeed;
-   
+    private AudioManager _audioManager;
     // Start is called before the first frame update
     void Start()
-    {
+    { _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         
     }
 
@@ -33,7 +33,7 @@ public class GunController : MonoBehaviour
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         gun.position = transform.position + Quaternion.Euler(0, 0, angle) * new Vector3(gunDistance, 0, 0);
         GunFlipController(mousePos);
-        bulletTranform.rotation = Quaternion.Euler(0, 0, angle );
+        bulletTranform.rotation = Quaternion.Euler(0, 0, angle);
 
         if (Input.GetKeyDown(KeyCode.Mouse0)&&(timer > spawnBulletTime))
         {
@@ -52,9 +52,10 @@ public class GunController : MonoBehaviour
     public void Shoot(float angle)
     {
     //    gunAnim.SetTrigger("Shoot");
+        _audioManager.PlaySFX(_audioManager.shoot);
         GameObject bulletClone = Instantiate(bulletPerfab);
         bulletClone.transform.position = bulletTranform.position;
-        bulletClone.transform.rotation = Quaternion.Euler(0, 0, angle+180);
+        bulletClone.transform.rotation = Quaternion.Euler(0, 0, angle);
 
         bulletClone.GetComponent<Rigidbody2D>().velocity = bulletTranform.right * bulletSpeed;
       
@@ -67,4 +68,5 @@ public class GunController : MonoBehaviour
         else if(mousePos.x>gun.position.x && !gunFacingRight)
             GunFlip();
     }
+  
 }

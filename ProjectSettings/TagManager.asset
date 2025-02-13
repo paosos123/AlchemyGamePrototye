@@ -10,6 +10,7 @@ TagManager:
   - FireEle
   - WaterEle
   - EarthEle
+  - Audio
   layers:
   - Default
   - TransparentFX
@@ -44,6 +45,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: bb
+    uniqueID: 163467997
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

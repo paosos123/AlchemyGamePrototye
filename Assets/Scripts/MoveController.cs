@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class MoveController : MonoBehaviour
 {
@@ -36,18 +37,35 @@ public class MoveController : MonoBehaviour
     static public float damageBullet = 1;
     private float xInput;
     private Vector2 vecGravity;
-
+    private bool isHit = false;
     private bool isJumping;
     private float jumpCounter;
     private bool facingRight = true;
+    [SerializeField] private  GameObject gameOverPanel;
+
+    private AudioManager _audioManager;
     // Start is called before the first frame update
     private void Start()
     {
+        _audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         vecGravity = new Vector2(0, -Physics.gravity.y);
         rb = GetComponent<Rigidbody2D>();
         curHealth = maxHealth;
         curHealthPot = maxHealthPot;
         animator = GetComponent<Animator>();
+        if (SceneManager.GetActiveScene().name == "First")
+        {
+             moveSpeed = 6f;
+             damageBullet = 1;
+             FireEleC = 0;
+             WaterEleC  = 0;
+             EarthEleC = 0;
+             curHealthPot =2;
+             GunController.spawnBulletTime = 2f;
+             Upgrade.lvFire = 1;
+             Upgrade.lvWater = 1;
+             Upgrade.lvEarth = 1;
+        }
     }
 
     // Update is called once per frame
@@ -89,6 +107,8 @@ public class MoveController : MonoBehaviour
 
         if (isDead())
         {
+            Time.timeScale = 0;
+            gameOverPanel.SetActive(true);
             Destroy(gameObject);
         }
         Heal();
@@ -124,6 +144,7 @@ public class MoveController : MonoBehaviour
    
     private void Jump()
     {
+        _audioManager.PlaySFX(_audioManager.jump);
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         isJumping = true;
         jumpCounter = 0;
@@ -168,6 +189,7 @@ public class MoveController : MonoBehaviour
         {
             if (curHealthPot > 0)
             {
+                _audioManager.PlaySFX(_audioManager.heal);
                 curHealthPot -= 1;
                 curHealth += healHealth;
                 Debug.Log(curHealth);
@@ -187,28 +209,54 @@ public class MoveController : MonoBehaviour
             Debug.LogError("Counter Text UI element not assigned!");
         }
     }
-    /*static  IEnumerator GetHurt()
+      IEnumerator GetHurt()
     {
         Physics2D.IgnoreLayerCollision(7,8);
+        GetComponent<Animator>().SetLayerWeight(1,1);
+        isHit = true;
         yield return new WaitForSeconds(2);
+        GetComponent<Animator>().SetLayerWeight(1,0);
         Physics2D.IgnoreLayerCollision(7,8,false);
-    }*/
+        isHit = false;
+       
+    }
     void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "FireEle")
         {
+            _audioManager.PlaySFX(_audioManager.getEle);
             counterFireEle.text = (FireEleC+=1).ToString(); 
             Destroy(col.gameObject);
         }
         if (col.gameObject.tag == "WaterEle")
         {
+            _audioManager.PlaySFX(_audioManager.getEle);
             counterWaterEle.text = (WaterEleC+=1).ToString(); 
             Destroy(col.gameObject);
         }
         if (col.gameObject.tag == "EarthEle")
         {
+            _audioManager.PlaySFX(_audioManager.getEle);
             counterEarthEle.text = (EarthEleC+=1).ToString(); 
             Destroy(col.gameObject);
         }
+        if ((col.gameObject.tag == "EnemyBullet"||col.gameObject.tag == "Enemy")&&isHit==false)
+        {
+            _audioManager.PlaySFX(_audioManager.getHit);
+            curHealth -= 1;
+            StartCoroutine(GetHurt());
+        }
     }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if ((col.gameObject.tag == "EnemyBullet"||col.gameObject.tag == "Enemy")&&isHit==false)
+        {
+            _audioManager.PlaySFX(_audioManager.getHit);
+            curHealth -= 1;
+            StartCoroutine(GetHurt());
+        }
+    }
+
+    
 }

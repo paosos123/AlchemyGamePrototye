@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2678718561847710290}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.81, z: 0}
+  m_LocalPosition: {x: 0.02, y: 1.81, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -1846386991
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: -4657369681490478202, guid: 09cd9b9c01a97ff44bb5a933ce535ce6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -256,4 +256,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25593dfa9514507469b2f72917e4b5d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eButton: {fileID: 2678718561847710290}
+  fButton: {fileID: 2678718561847710290}
+  choosePanel: {fileID: 0}
