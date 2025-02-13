@@ -498,11 +498,11 @@ RectTransform:
   - {fileID: 1572953096}
   m_Father: {fileID: 839121190}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
+  m_SizeDelta: {x: 1919, y: 1080}
+  m_Pivot: {x: 1, y: 1}
 --- !u!1 &94562127
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,11 +611,11 @@ RectTransform:
   - {fileID: 88301233}
   m_Father: {fileID: 839121190}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_SizeDelta: {x: 1919, y: 1080}
+  m_Pivot: {x: 0, y: 1}
 --- !u!1 &129849104
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +822,7 @@ PrefabInstance:
       objectReference: {fileID: 350361419}
     - target: {fileID: 8236431290567201429, guid: aa4cd506092c5c249a54755051054492, type: 3}
       propertyPath: health
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8687,11 +8687,11 @@ RectTransform:
   - {fileID: 1472482448}
   m_Father: {fileID: 839121190}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_SizeDelta: {x: 1919, y: 1080}
+  m_Pivot: {x: 0, y: 1}
 --- !u!1 &2065180636
 GameObject:
   m_ObjectHideFlags: 0

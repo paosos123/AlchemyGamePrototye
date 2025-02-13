@@ -81,7 +81,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 31
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -146,10 +146,10 @@ TextureImporter:
       name: shop_anim_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 99
-        width: 16
-        height: 16
+        x: 0
+        y: 0
+        width: 118
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -167,10 +167,10 @@ TextureImporter:
       name: shop_anim_1
       rect:
         serializedVersion: 2
-        x: 148
-        y: 99
-        width: 11
-        height: 11
+        x: 118
+        y: 0
+        width: 118
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -188,10 +188,10 @@ TextureImporter:
       name: shop_anim_2
       rect:
         serializedVersion: 2
-        x: 266
-        y: 101
-        width: 9
-        height: 8
+        x: 236
+        y: 0
+        width: 118
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -209,10 +209,10 @@ TextureImporter:
       name: shop_anim_3
       rect:
         serializedVersion: 2
-        x: 383
-        y: 102
-        width: 9
-        height: 10
+        x: 354
+        y: 0
+        width: 118
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -230,10 +230,10 @@ TextureImporter:
       name: shop_anim_4
       rect:
         serializedVersion: 2
-        x: 471
+        x: 472
         y: 0
-        width: 120
-        height: 113
+        width: 118
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -251,10 +251,10 @@ TextureImporter:
       name: shop_anim_5
       rect:
         serializedVersion: 2
-        x: 617
-        y: 98
-        width: 14
-        height: 17
+        x: 590
+        y: 0
+        width: 118
+        height: 128
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,122 +268,23 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: shop_anim_6
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 119
-        height: 99
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: be5dbc4800d545550800000000000000
-      internalID: 6148641648076903915
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shop_anim_7
-      rect:
-        serializedVersion: 2
-        x: 117
-        y: 0
-        width: 120
-        height: 99
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b1685c0927a27d120800000000000000
-      internalID: 2438464394787915291
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shop_anim_8
-      rect:
-        serializedVersion: 2
-        x: 235
-        y: 0
-        width: 120
-        height: 99
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 12daef51419561000800000000000000
-      internalID: 6290392290864417
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shop_anim_9
-      rect:
-        serializedVersion: 2
-        x: 353
-        y: 0
-        width: 120
-        height: 101
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 02876603e507b15d0800000000000000
-      internalID: -3090753169418455008
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: shop_anim_10
-      rect:
-        serializedVersion: 2
-        x: 589
-        y: 0
-        width: 119
-        height: 99
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e124e092dfa209b00800000000000000
-      internalID: 833213197867434526
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: dd5c97681d332d34f86ef45395728f72
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      shop_anim_0: -703694214479097736
+      shop_anim_1: 6383442354913522013
+      shop_anim_2: -6908235122186328917
+      shop_anim_3: 6263233112828526159
+      shop_anim_4: 3879049702924754164
+      shop_anim_5: 8363047684650912007
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

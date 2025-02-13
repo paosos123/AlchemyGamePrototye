@@ -51,7 +51,7 @@ public class MoveController : MonoBehaviour
         vecGravity = new Vector2(0, -Physics.gravity.y);
         rb = GetComponent<Rigidbody2D>();
         curHealth = maxHealth;
-        curHealthPot = maxHealthPot;
+       
         animator = GetComponent<Animator>();
         if (SceneManager.GetActiveScene().name == "First")
         {
